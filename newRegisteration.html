@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Dashboard</title>
+
+  <script src="https://kit.fontawesome.com/ea6d4fec5e.js" crossorigin="anonymous"></script>
+  <style>
+    /* * {
+      border: 1px solid red;
+    } */
+
+    .left-logo {
+      width: 100%;
+      margin-top: 19%;
+    }
+
+    .register-new select {
+      padding: 5%;
+    }
+
+    .register-new {
+      padding: 2%;
+    }
+
+    .register-new input {
+      border: none;
+    }
+
+    .register-new input[type='file'] {
+      padding: 5%;
+
+    }
+
+    .shirt-dropdown {
+      position: relative;
+      top: 300px;
+      left: 20px;
+    }
+
+    .shirt-image {
+      display: none;
+    }
+
+    .shirt-image-show {
+      display: block;
+      width: 30vw;
+      position: absolute;
+      top: 800px;
+      left: 50px;
+    }
+
+    @media(max-width:576px) {
+      .shirt-image {
+        width: 90%;
+      }
+
+      .shirt-image-show {
+        top: 1800px;
+      }
+
+      /* footer */
+      footer {
+        margin-top: 20px;
+      }
+
+      .quickLinks {
+        margin-top: 20px;
+      }
+
+      .list-unstyled>li {
+        color: grey;
+      }
+
+      .quickLinks a {
+        text-decoration: none;
+        color: grey;
+      }
+
+      .quickLinks a:hover {
+        text-decoration: none;
+        color: black;
+      }
+
+      .socialLinks {
+        font-weight: bold;
+        color: lightseagreen;
+      }
+
+    }
+
+    @media (max-width:768px) {
+      .left-logo {
+        width: 80%;
+        margin-left: 10%;
+      }
+    }
+
+
+    /*fooooteerrrr*/
+
+    footer {
+      margin-top: 20px;
+    }
+
+    .quickLinks {
+      margin-top: 20px;
+    }
+
+    .list-unstyled>li {
+      color: grey;
+    }
+
+    .quickLinks a {
+      text-decoration: none;
+      color: grey;
+    }
+
+    .quickLinks a:hover {
+      text-decoration: none;
+      color: black;
+    }
+
+    /*headerrrrrrrrr*/
+    .new-navbar .nav-bar {
+      display: flex;
+      align-items: center;
+      /* Align items vertically centered */
+      justify-content: space-between;
+      /* Distribute items horizontally */
+      list-style: none;
+      color: black;
+      font-weight: 500;
+      padding: 12px 20px;
+      box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
+    }
+
+    .logoimage {
+      flex: 0 0 30%;
+      /* Set the width of the logo container */
+    }
+
+    .new-navbar .logoimage img {
+      width: 100%;
+      display: block;
+      /* Remove any extra spacing around the image */
+    }
+
+
+    .menu .logo {
+      display: none;
+    }
+
+    .new-navbar .menu {
+      display: flex;
+    }
+
+    .new-navbar .menu li {
+      padding-left: 10px;
+    }
+
+    .new-navbar .menu li a {
+      display: inline-block;
+      text-decoration: none;
+      color: var(--color1);
+      text-align: center;
+      transition: 0.15s ease-in-out;
+      position: relative;
+      text-transform: uppercase;
+    }
+
+    .new-navbar .menu li a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--color1);
+      transition: 0.15s ease-in-out;
+    }
+
+    .new-navbar .menu li a:hover:after {
+      width: 100%;
+    }
+
+    .new-navbar .open-menu,
+    .close-menu {
+      position: absolute;
+      color: var(--color1);
+      cursor: pointer;
+      font-size: 1.5rem;
+      display: none;
+    }
+
+    .new-navbar a:hover {
+      text-decoration: underline !important;
+      padding: 2% !important;
+    }
+
+    .new-navbar .open-menu {
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+    }
+
+    .new-navbar select {
+      width: 20%;
+      margin: 0% 2%;
+      font-weight: 500;
+      border: none;
+      margin-top: -1%;
+    }
+
+    .new-navbar .close-menu {
+      top: 20px;
+      right: 20px;
+    }
+
+    .new-navbar #check {
+      display: none;
+    }
+
+    .new-navbar .registerBtn {
+      margin-top: -1%;
+      margin-left: 10%;
+      display: inline-block;
+      padding: 5px 20px;
+      justify-content: center;
+      text-align: center;
+      text-decoration: none;
+      color: #000;
+      background-color: #003B7D;
+      color: white !important;
+      border-radius: 2px;
+      animation: scaleAnimation 2s infinite;
+    }
+
+    @keyframes scaleAnimation {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+        /* You can adjust the scale factor as per your preference */
+      }
+    }
+
+
+    @media (max-width: 768px) {
+      .new-navbar select {
+        width: 70%;
+        margin-left: 8%;
+      }
+
+      .new-navbar a {
+        color: white !important;
+      }
+
+      .new-navbar .registerBtn {
+        background-color: transparent;
+        border: 1px solid white
+      }
+
+      .new-navbar .nav-bar {
+
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        position: relative;
+        color: black;
+        font-weight: 700;
+        padding: 12px 20px;
+      }
+
+      .logoimage {
+        width: 30%
+      }
+
+      .new-navbar .logoimage img {
+        width: 250%;
+      }
+
+      .new-navbar .menu {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 60%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        z-index: 100;
+        background-color: #003B7D;
+        transition: all 0.2s ease-in-out;
+      }
+
+
+      .new-navbar .menu li {
+        margin-top: 10px;
+      }
+
+      .new-navbar .menu li a {
+        padding: 10px;
+      }
+
+      .new-navbar .open-menu,
+      .close-menu {
+        display: block;
+      }
+
+      .new-navbar .close-menu {
+        color: white !important;
+      }
+
+      #check:checked~.menu {
+        right: 0;
+      }
+
+      .menu .logo {
+        display: none;
+      }
+
+      .new-navbar #home {
+        margin-top: 100%
+      }
+
+    }
+
+    .subFooter a {
+      text-decoration: none;
+      font-size: 1rem !important;
+      color: white
+    }
+
+    .form-label {
+      font-weight: 500;
+    }
+  </style>
+  <script>
+    let s = true;
+    function showShirt() {
+      //alert();
+
+      var shirtValue = document.getElementById("shirt-dropdown-id").value;
+      console.log(shirtValue, s)
+      if (shirtValue == "" && s == true || shirtValue != "" && s == true) {
+        document.getElementById("shirt").classList.add("shirt-image-show");
+        s = false;
+      }
+      else if (shirtValue != "" && s == false) {
+        document.getElementById("shirt").classList.remove("shirt-image-show");
+        s = true;
+      }
+    }
+
+  </script>
+
+</head>
+
+<body>
+
+  <!--navbar-->
+  <header>
+    <nav class="new-navbar">
+      <div class='nav-bar'>
+        <li class="logoimage"><a href="#"><img src="images/logo.webp" /></a></li>
+        <div>
+          <input type='checkbox' id='check' />
+          <span class="menu">
+            <li class='logo'><a href='#'><img src='images/logo.webp' /></a></li>
+            <li><a id="home" href="">Home</a></li>
+            <select class="form-select" aria-label="Default select example">
+              <option selected value="Managing commitee">COMMITTEE</option>
+              <option>National Committee</option>
+              <option value="India">IMA AP State Committee</option>
+
+            </select>
+
+            <li><a href="">Rules</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="">Schedule</a></li>
+            <li><a href="">Games</a></li>
+            <li><a href="">Login</a></li>
+            <li><a class="registerBtn">Register</a></li>
+            <label for="check" class="close-menu"><i class="fas fa-times"></i></label>
+          </span>
+          <label for="check" class="open-menu"><i class="fas fa-bars"></i></label>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!--body content-->
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6">
+
+        <img src="images/login-thumb.webp" class="left-logo" />
+
+      </div>
+      <div class="col-12 col-md-6">
+        <h1 align="center" style="color:navy;margin-top: 2%;">REGISTER</h1>
+        <form class="register-new" style="background-color: rgba(206,238,255,0.7)">
+          <div class="container w-100 h-100">
+            <div class="row">
+
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="firstName">First Name<span style="color: red;">*</span></label>
+                  <input type="text" id="firstName" class="form-control form-control-lg"
+                    placeholder="Enter First Name" />
+
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="firstName">Last Name<span style="color: red;">*</span></label>
+                  <input type="text" id="lastName" class="form-control form-control-lg" placeholder="Enter Last Name" />
+
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="firstName">Email<span style="color: red;">*</span></label>
+                  <input type="email" id="firstName" class="form-control form-control-lg" placeholder="Enter Email" />
+
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="firstName">Password<span style="color: red;">*</span></label>
+                  <input type="text" id="lastName" class="form-control form-control-lg" placeholder="Enter Password" />
+
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+
+
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="firstName">Mobile Number<span style="color: red;">*</span></label>
+                  <input type="text" id="lastName" class="form-control form-control-lg"
+                    placeholder="Enter Mobile Number" />
+
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="firstName">Age<span style="color: red;">*</span></label>
+                  <input type="text" id="firstName" class="form-control form-control-lg" placeholder="Enter Age" />
+
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+
+
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="firstName">Gender<span style="color: red;">*</span></label>
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>Select Gender</option>
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                    <option value="3">Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="firstName">Date Of Birth<span style="color: red;">*</span></label>
+                  <input type="date" id="firstName" class="form-control form-control-lg"
+                    placeholder="Enter Date of Birth" />
+
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+
+
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="firstName">City<span style="color: red;">*</span></label>
+                  <input type="text" id="lastName" class="form-control form-control-lg" placeholder="Enter City" />
+
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="firstName">Address<span style="color: red;">*</span></label>
+                  <input type="text" id="firstName" class="form-control form-control-lg" placeholder="Enter Address" />
+
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+
+
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="firstName">State<span style="color: red;">*</span></label>
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>Select State</option>
+                    <option value="" disabled selected>Select Your state</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="West Bengal">West Bengal</option>
+
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="firstName">Country<span style="color: red;">*</span></label>
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>Select Country</option>
+                    <option value="India">India</option>
+
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+
+
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="firstName">Degree-MBBS(Compulsory)<span
+                      style="color: red;">*</span></label>
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>Select Degree-MBBS</option>
+
+                    <option value="MD">MD</option>
+                    <option value="MS">MS</option>
+                    <option value="DNB">DNB</option>
+                    <option value="Diploma">Diploma</option>
+                    <option value="DM">DM</option>
+                    <option value="MCH">MCH</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="firstName">State or MCI Registration No<span
+                      style="color: red;">*</span></label>
+
+                  <input type="text" id="firstName" class="form-control form-control-lg"
+                    placeholder="Enter Registration No" />
+
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="firstName">Select Member<span style="color: red;">*</span></label>
+
+
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>Select Member</option>
+
+                    <option value="IMA Member">IMA Member-3500/</option>
+                    <option value="Non IMA Member">Non IMA Member-4000/</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="firstName">Select Game<span style="color: red;">*</span></label>
+
+                  <select class="form-select" aria-label="Default select example">
+                    <option value="" disabled selected>Select game</option>
+                    <option value="ATHLETICS">ATHLETICS</option>
+                    <option value="ARCHERY">ARCHERY</option>
+                    <option value="BADMINTON">BADMINTON</option>
+                    <option value="BADMINTON">BALL BADMINTON</option>
+                    <option value="BASKETBALL">BASKETBALL</option>
+                    <option value="CARROM">CARROMS</option>
+                    <option value="CHESS">CHESS</option>
+                    <option value="CRICKET_WHITE_BALL">CRICKET WHITE BALL</option>
+                    <option value="HARD_TENNIS_CRICKET">HARD TENNIS CRICKET</option>
+                    <option value="WOMEN_BOX_CRICKET">WOMEN BOX CRICKET</option>
+                    <option value="CYCLOTHON">CYCLOTHON</option>
+                    <option value="FENCING">FENCING</option>
+                    <option value="FOOTBALL">FOOTBALL</option>
+                    <option value="JUMPS">JUMPS</option>
+                    <option value="KABADDI">KABADDI</option>
+                    <option value="KHO KHO">KHO KHO</option>
+                    <option value="LAWN TENNIS">LAWN TENNIS</option>
+                    <option value="MARATHON">MARATHON</option>
+                    <option value="ROLLER SKATING">ROLLER SKATING</option>
+                    <option value="ROWING">ROWING</option>
+                    <option value="SHOOTING">SHOOTING</option>
+                    <option value="SWIMMING">SWIMMING</option>
+                    <option value="TABLE TENNIS">TABLE TENNIS</option>
+                    <option value="BADMINTON">TENNIKOIT</option>
+                    <option value="THROW">THROW</option>
+                    <option value="TUG OF WAR">TUG OF WAR</option>
+                    <option value="VOLLYBALL">VOLLY BALL</option>
+                    <option value="WALKETHON">WALKETHON</option>
+
+                  </select>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="row">
+
+
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="firstName">Select Shirt Size<span style="color: red;">*</span></label>
+                  <select class="form-select" onclick="showShirt()" id="shirt-dropdown-id"
+                    aria-label="Default select example">
+                    <option selected>Select Shirt Size</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                    <option value="XXXL">XXXL</option>
+                    <option value="XXXXL">XXXXL</option>
+                  </select>
+
+                </div>
+                <img src="images/T-Shirts Sizes Potrait.jpg" width id="shirt" class="shirt-image" />
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label for="formFile" class="form-label">Upload IMA & MBBS Certificate</label>
+                  <input class="form-control" type="file" id="formFile">
+
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label for="formFile" class="form-label">Upload Photo</label>
+                  <input class="form-control" type="file" id="formFile">
+
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+
+                  <label for="formFile" class="form-label">Upload DOB Certificate</label>
+                  <input class="form-control" type="file" id="formFile">
+
+                </div>
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="col-md-3 mb-4">
+                <div class="form-outline">
+                  <button class="btn btn-success">Submit</button>
+
+                </div>
+              </div>
+              <div class="col-md-9 mb-4">
+                <div class="form-outline">
+                  <input class="form-control" placeholder="Enter your OTP" id="formFile">
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7 mb-4">
+
+            </div>
+
+            <div class="btn btn-primary col-md-12 mb-4">
+              Register
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer class="foot py-4">
+    <div class="container">
+      <div class="row footer_row justify-content-between">
+        <div class="col-12 col-md-4 mb-4">
+          <img src="images/logo.webp" alt="Logo" class="img-fluid mb-3" />
+          <p>
+            <b>Unite, Compete, Excel - Our Nation's Passion for Sports</b>
+          </p>
+          <div class="socialLinks d-flex flex-column">
+            <span><i class="fa fa-envelope"> </i> Email:
+              doctorsolympaid2023@gmail.com</span><br />
+            <span><i class="bi bi-telephone"></i> Phone: 9759434567</span><br />
+            <span><i class="bi bi-telephone"></i> Mobile: 9759634567</span><br />
+          </div>
+          <div class="message d-flex gap-1">
+            <a href="https://api.whatsapp.com/send?phone=YOUR_WHATSAPP_NUMBER" target="_blank"
+              rel="noopener noreferrer">
+              <i class="bi bi-whatsapp text-success"></i>
+            </a>
+            <a href="https://www.instagram.com/YOUR_INSTAGRAM_ACCOUNT" target="_blank" rel="noopener noreferrer">
+              <i class="bi bi-instagram text-danger"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-12 col-md-3 mb-4">
+          <h2 style="background-color: #fff">Get In Touch</h2>
+          <p>Indian Medical Association VIJAYAWADA Branch</p>
+          <span>DOCTORS SPORTS ACADEMY D.No.14: Beside GEMS Public School</span>
+          <span>Kaza Village, Mangalagiri Mandal, Guntur District, Andhra
+            Pradesh</span>
+        </div>
+        <div class="col-12 col-md-3 mb-4">
+          <h2 style="background-color: #fff">Quick Links</h2>
+          <ul class="list-unstyled quickLinks">
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Return & Refund Policy</a></li>
+            <li><a href="#">Cancellation Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="subFooter text-center bg-primary text-white py-1">
+    <h4>
+      <a href="https://www.codegnan.com">Designed By Codegnan &#169; All Right Reserved</a>
+
+    </h4>
+  </div>
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
